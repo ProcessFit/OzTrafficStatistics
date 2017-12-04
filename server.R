@@ -4,8 +4,6 @@
 # Server.R
 library(shiny)
 library(tidyverse)
-#library(ckanr) # Access data from CKAN.
-#library(jsonlite)
 library(lubridate)
 library(markdown)
 #Sys.setenv(CKANR_DEFAULT_URL="http://data.gov.au")
@@ -19,16 +17,8 @@ library(markdown)
 ##   Data preparation
 ## -----------------------------------------------------------------------------
 
-#fileurl <- "./data/multipleChoiceResponses.csv"
-#df <- read.csv(fileurl,  stringsAsFactors = TRUE)
 
 d <- read.csv("./data/road_oz.csv")
-
-'--------------------'
-#sql <- 'SELECT * from "fd646fdc-7788-4bea-a736-e4aeb0dd09a8"'
-#ds_search_sql(sql, as = "table")
-#d <- ds_search_sql(sql, as = "table")
-
 users <- unique(d$Road_User)
 
 ## -----------------------------------------------------------------------------
@@ -38,7 +28,8 @@ users <- unique(d$Road_User)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
 
-  
+
+# Setup user selection
 output$Box1 = renderUI(selectInput(inputId  = 'input_user', 
                    label    = "Select User Type:", 
                    c("All",as.character(users))
@@ -75,6 +66,7 @@ output$Box4 = renderUI(radioButtons("rb_plot", "Plot by:",
                                     )))
 
 
+# Create Headers
 output$outText2 <- renderText({ 
   try(buildplot(0,1),TRUE)
 })
@@ -83,8 +75,9 @@ output$outText3 <- renderText({
 })
 
 buildplot <- function(plot_type, return_title = FALSE) {
-  df1 <- d[d$Gender=='Female' | d$Gender == "Male",]
+  # Function to apply filters and selections - returns data set, chart or titles.
   
+  df1 <- d[d$Gender=='Female' | d$Gender == "Male",]
   if(input$rb_plot==0){
     df1 <- df1 %>% mutate(plot_by = Road_User)
     plotby = "Road User Type"
@@ -146,7 +139,6 @@ buildplot <- function(plot_type, return_title = FALSE) {
     return(df1)
   }
   
-  
   if(plot_type==0){
     dd <- df1 %>% select(hour, plot_by) %>% group_by(hour,plot_by) %>% summarise(No_fatalities = n())
     g <- ggplot(dd, aes(x = hour, y = No_fatalities))+geom_line(aes(colour = plot_by), size = 1.2)
@@ -167,9 +159,10 @@ buildplot <- function(plot_type, return_title = FALSE) {
                  strip.text = element_text(size = 14, face="bold", colour = "white")) 
   g <- g + xlab(title_text) + ylab("No. of Fatalities") + guides(colour=guide_legend(title=plotby))
   g
-}
+}  # end of setup function
 
 
+# Send output to plots
 output$plot <-  renderPlot({
     g <- try(buildplot(0),TRUE)
     try(print(g),TRUE)

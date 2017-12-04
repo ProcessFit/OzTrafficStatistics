@@ -21,9 +21,13 @@ The data can be found at the following url:
       
  -  https://data.gov.au/dataset/australian-road-deaths-database/resource/fd646fdc-7788-4bea-a736-e4aeb0dd09a8.
 
-The application can be viewed here:
+The application can be viewed at shinyapps.io:
 
- -  
+ -  https://processfit.shinyapps.io/OzTrafficStats/
+
+This presentation can be viewed on Github:
+
+ -  https://processfit.github.io/OzTrafficStatistics/OzTrafficStats.html#1
 
 ## Using the Application  {.smaller}
 

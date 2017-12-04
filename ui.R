@@ -1,7 +1,12 @@
+#########################
+# Lindy Woodburn
+# Coursera Project - Shiny Applicaton and Reproducible Pitch
+# UI.R
+
 library(shiny)
 
 
-# Define UI for application that draws a histogram
+# Define UI for application
 shinyUI(fluidPage(includeCSS("www/style.css"),titlePanel('',windowTitle="Oz Road Traffic Statistics"),
   navbarPage(tags$h2(class="panel-title1","Australian Road Traffic Statistics     "),
              tabPanel("Explore the Data",

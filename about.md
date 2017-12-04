@@ -8,6 +8,11 @@ The application allows users to plot traffic accidents by frequency based on the
 
 The data indicates significant improvements overall in road fatalities over the time period. An exception is for male motor cycle riders in the 40-65 years age group, which show an increasing trend in fatalities.  For older, and presumably more experienced drivers, most accidents occur in the middle of the afternoon, while for younger drivers, the evening and early hours of the morning produce more fatalities.
 
+For more information, refer to the following presentation and github sites:
+
+  - https://processfit.github.io/OzTrafficStatistics/OzTrafficStats.html#1
+  - https://github.com/ProcessFit/OzTrafficStatistics
+
 
 
 This application was created in December 2017 as part of completion of the Coursera course by John Hopkins University: **Developing Data Products**.
