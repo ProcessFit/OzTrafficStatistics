@@ -3,6 +3,8 @@ title: "Visualisation of Australian Road Traffic Statistics"
 author: "Lindy Woodburn"
 date: "5 December 2017"
 output: ioslides_presentation
+css: www/style.css
+widescreen: true
 ---
 
 ```{r setup, include=FALSE}
@@ -33,13 +35,6 @@ This presentation can be viewed on Github:
 
 
 The application allows users to visualise traffic accidents.  
-  
-**The user can filter and display data using the following fields**:  
- 
-  -  State  (ALL, NSW, QLD, VIC, TAS, SA, WA, NT)  
-  -  Gender (ALL, Male, Female)  
-  -  Age Group (<18, 18-25, 25-40, 40-65, 65+)   
-  -  Road User Type (Pedestrian, Driver, Passenger, Motorcycle Rider, Pillion Passenger, Bicyclist)  
 
 **To filter data**: 
 
@@ -48,8 +43,16 @@ The application allows users to visualise traffic accidents.
 **To change how data is displayed**:  
 
    - Select an option in the "plot by" option boxes  
-  
-A simplified dataset can be downloaded from the 'data' page.  
+
+Available fields:
+
+   Feature            Values
+   ---------------   ---------------------------------
+  -  State            NSW, QLD, VIC, TAS, SA, WA, NT
+  -  Gender           Male, Female)  
+  -  Age Group        <18, 18-25, 25-40, 40-65, 65+  
+  -  Road User Type   Pedestrian, Driver, Passenger, Motorcycle Rider,<br> Pillion Passenger, Bicyclist 
+
 
 ## Calculations performed within the Application  {.smaller}
 

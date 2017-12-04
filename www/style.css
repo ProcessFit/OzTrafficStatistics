@@ -2,6 +2,15 @@
 */
 
 
+H1, H2 {
+  color: blue;
+  font-weight: 900;
+}
+
+.title-slide hgroup h1 {
+  color: blue;
+}
+
 .panel-title1 {
   margin-top: 0;
   margin-bottom: 0;

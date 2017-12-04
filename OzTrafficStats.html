@@ -80,12 +80,13 @@
 
   </style>
 
+  <link href="data:text/css;charset=utf-8,%0AH1%2C%20H2%20%7B%0Acolor%3A%20blue%3B%0Afont%2Dweight%3A%20900%3B%0A%7D%0A%2Etitle%2Dslide%20hgroup%20h1%20%7B%0Acolor%3A%20blue%3B%0A%7D%0A%2Epanel%2Dtitle1%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0Afont%2Dsize%3A%2022px%3B%0Acolor%3A%20%23000000%3B%0A%7D%0A%2Elogo%5Fbig%20%7B%0A%0Afloat%3A%20right%3B%0A%7D%0A%2Elogo%5Fsm%20%2Enavbar%2Dbrand%20%7B%0Adisplay%3A%20flex%3B%0Aalign%2Ditems%3A%20center%3B%0A%7D%0A%2Elogo%5Fsm%20%2Enavbar%2Dbrand%3Eimg%20%7B%0Apadding%3A%207px%2014px%3B%0A%7D%0A%2Emulticol%20%7B%20height%3A%20150px%3B%0A%2Dwebkit%2Dcolumn%2Dcount%3A%202%3B%20%20%2Dmoz%2Dcolumn%2Dcount%3A%202%3B%20%20column%2Dcount%3A%202%3B%20%2Dmoz%2Dcolumn%2Dfill%3A%20auto%3B%0A%2Dcolumn%2Dfill%3A%20auto%3B%0A%7D%20" rel="stylesheet" type="text/css" />
 
 </head>
 
 <body style="opacity: 0">
 
-<slides>
+<slides class="layout-widescreen">
 
   <slide class="title-slide segue nobackground">
         <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
@@ -125,15 +126,6 @@
 
 <p>The application allows users to visualise traffic accidents.</p>
 
-<p><strong>The user can filter and display data using the following fields</strong>:</p>
-
-<ul>
-<li>State (ALL, NSW, QLD, VIC, TAS, SA, WA, NT)<br/></li>
-<li>Gender (ALL, Male, Female)<br/></li>
-<li>Age Group (&lt;18, 18-25, 25-40, 40-65, 65+)<br/></li>
-<li>Road User Type (Pedestrian, Driver, Passenger, Motorcycle Rider, Pillion Passenger, Bicyclist)</li>
-</ul>
-
 <p><strong>To filter data</strong>:</p>
 
 <ul>
@@ -146,7 +138,30 @@
 <li>Select an option in the &quot;plot by&quot; option boxes</li>
 </ul>
 
-<p>A simplified dataset can be downloaded from the &#39;data&#39; page.</p>
+<p>Available fields:</p>
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Feature</th>
+<th align="center">Values</th>
+</tr>
+<tr class="odd">
+<td align="left">State</td>
+<td align="center">NSW, QLD, VIC, TAS, SA, WA, NT</td>
+</tr>
+<tr class="even">
+<td align="left">Gender</td>
+<td align="center">Male, Female)</td>
+</tr>
+<tr class="odd">
+<td align="left">Age Group</td>
+<td align="center">&lt;18, 18-25, 25-40, 40-65, 65+</td>
+</tr>
+<tr class="even">
+<td align="left">Road User Type</td>
+<td align="center">Pedestrian, Driver, Passenger, Motorcycle Rider,<br> Pillion Passenger, Bicyclist</td>
+</tr>
+</table>
 
 </article></slide><slide class=""><hgroup><h2>Calculations performed within the Application</h2></hgroup><article  id="calculations-performed-within-the-application" class="smaller">
 
