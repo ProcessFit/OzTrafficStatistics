@@ -1,0 +1,70 @@
+---
+title: "Visualisation of Australian Road Traffic Statistics"
+author: "Lindy Woodburn"
+date: "5 December 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+d <- read.csv("./data/road_oz.csv")
+```
+
+## Australian Road Traffic Statistics  {.smaller}
+
+This application presents Australian Road Traffic fatalities by State, Gender, Road Type User, Age group as annual data from 1993 to 2017. 
+
+The original data is sourced from the Australian Road Deaths Database (ARDD), which provides basic details of road transport crash fatalities in Australia as reported by the police each month to the State and Territory road safety authorities.  
+
+The data can be found at the following url:   
+      
+ -  https://data.gov.au/dataset/australian-road-deaths-database/resource/fd646fdc-7788-4bea-a736-e4aeb0dd09a8.
+
+The application can be viewed here:
+
+ -  
+
+## Using the Application  {.smaller}
+
+
+The application allows users to visualise traffic accidents.  
+  
+**The user can filter and display data using the following fields**:  
+ 
+  -  State  (ALL, NSW, QLD, VIC, TAS, SA, WA, NT)  
+  -  Gender (ALL, Male, Female)  
+  -  Age Group (<18, 18-25, 25-40, 40-65, 65+)   
+  -  Road User Type (Pedestrian, Driver, Passenger, Motorcycle Rider, Pillion Passenger, Bicyclist)  
+
+**To filter data**: 
+
+  - Select the required options from the left hand side.  
+
+**To change how data is displayed**:  
+
+   - Select an option in the "plot by" option boxes  
+  
+A simplified dataset can be downloaded from the 'data' page.  
+
+## Calculations performed within the Application  {.smaller}
+
+
+Based on the user selections, data is grouped and summarised (using the dplyr package) to provide an overview of information either by Year, or by Time of day.
+```{r echo = TRUE}
+d %>% select(Year, State) %>% group_by(Year,State) %>% summarise(No_fatalities = n())
+```
+
+
+
+## Understanding the Data  {.smaller}
+
+The data indicates significant improvements overall in road fatalities over the time period. An exception is for male motor cycle riders in the 40-65 years age group, which show an increasing trend in fatalities.  
+
+For older, and presumably more experienced drivers, most accidents occur in the middle of the afternoon, while for younger drivers, the evening and early hours of the morning produce more fatalities.
+
+
+
+This application was created in December 2017 as part of completion of the Coursera course by John Hopkins University: **Developing Data Products**.
+
+
