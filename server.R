@@ -52,7 +52,7 @@ output$Box3 = renderUI(radioButtons("rb_age", "Select Age Group:",
                                       "All","<18","18-25","25-40","40-65","65+"
                                     ),
                                     choiceValues = list(
-                                      0,1,2,3,4,5
+                                     1,2,3,4,5,6
                                     )))
 
 
@@ -62,29 +62,34 @@ output$Box4 = renderUI(radioButtons("rb_plot", "Plot by:",
                                       "Road User Type", "State","Gender", "Age Range"
                                     ),
                                     choiceValues = list(
-                                      0,1,2,3
+                                      1,2,3,4
                                     )))
 
 
 # Create Headers
 output$outText2 <- renderText({ 
-  try(buildplot(0,1),TRUE)
+  tryCatch(buildplot(0,1),TRUE)
 })
 output$outText3 <- renderText({ 
   try(buildplot(0,1),TRUE)
 })
 
 buildplot <- function(plot_type, return_title = FALSE) {
-  # Function to apply filters and selections - returns data set, chart or titles.
   
+  # Escape --> prevent error on startup
+  if(is.null(input$rb_plot) || is.na(input$rb_plot))
+  {
+    return()
+  }
+  # Function to apply filters and selections - returns data set, chart or titles.
   df1 <- d[d$Gender=='Female' | d$Gender == "Male",]
-  if(input$rb_plot==0){
+  if(input$rb_plot==1){
     df1 <- df1 %>% mutate(plot_by = Road_User)
     plotby = "Road User Type"
-  } else if (input$rb_plot==1){
+  } else if (input$rb_plot==2){
     df1 <- df1 %>% mutate(plot_by = State)
     plotby = "State"
-  } else if (input$rb_plot==2){
+  } else if (input$rb_plot==3){
     df1 <- df1 %>% mutate(plot_by = Gender)
     plotby = "Gender"
   } else {
@@ -93,18 +98,18 @@ buildplot <- function(plot_type, return_title = FALSE) {
   }
   
   title_age = 'All Age Groups'
-  if (input$rb_age ==0) {
+  if (input$rb_age ==1) {
     df1 <- df1
-  } else if (input$rb_age == 1) {
+  } else if (input$rb_age == 2) {
     df1 <- df1[ (df1$Age <= 18 ),]
     title_age = 'Under 18'
-  } else if (input$rb_age == 2) {
+  } else if (input$rb_age == 3) {
     df1 <- df1[ (df1$Age > 18 ) & (df1$Age <=25),]
     title_age = '18 - 25 years'
-  } else if (input$rb_age == 3) {
+  } else if (input$rb_age == 4) {
     df1 <- df1[ (df1$Age > 25 ) & (df1$Age <=40),]
     title_age = '25-40 years'
-  } else if (input$rb_age == 4) {
+  } else if (input$rb_age == 5) {
     df1 <- df1[ (df1$Age > 40 ) & (df1$Age <=65),]
     title_age = '40 - 65 years'
   } else {
